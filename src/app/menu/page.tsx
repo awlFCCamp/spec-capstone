@@ -1,16 +1,20 @@
 import Link from "next/link";
 import React from "react";
 import { MenuType } from "@/types/types";
+import axios from "axios";
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed!");
+async function getData() {
+  try {
+    const res = await axios.get("http://localhost:3000/api/categories", {
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
   }
-  return res.json();
-};
+}
 
 const MenuPage = async () => {
   const menu: MenuType = await getData();
