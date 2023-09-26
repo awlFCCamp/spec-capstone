@@ -26,7 +26,7 @@ id String @id @default(cuid())
 createAt DateTime @default(now())
 title String
 desc String
-img String
+img String?
 price Decimal
 isFeatured Boolean @default(false)
 options Json[]

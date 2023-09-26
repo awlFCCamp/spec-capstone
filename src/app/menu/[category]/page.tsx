@@ -1,11 +1,33 @@
-import { pizzas } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import { ProductType } from "@/types/types";
 
-const CategoryPage = () => {
+type paramsProps = {
+  params: { category: string };
+};
+
+async function getData(category: string) {
+  try {
+    const res = await axios.get(
+      `http://localhost:3000/api/products?cat=${category}`,
+      {
+        headers: {
+          "Cache-Control": "no-store",
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+const CategoryPage = async ({ params }: paramsProps) => {
+  const products: ProductType[] = await getData(params.category);
   return (
     <div className="flex flex-wrap text-green-500">
-      {pizzas.map((item) => (
+      {products.map((item) => (
         <Link
           key={item.id}
           href={`/product/${item.id}`}

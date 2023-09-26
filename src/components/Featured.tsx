@@ -1,6 +1,22 @@
 import Image from "next/image";
-import { featuredProducts } from "@/data";
-const Featured = () => {
+import axios from "axios";
+import { ProductType } from "@/types/types";
+
+async function getData() {
+  try {
+    const res = await axios.get("http://localhost:3000/api/products", {
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+const Featured = async () => {
+  const featuredProducts: ProductType[] = await getData();
   return (
     <div className="w-screen overflow-x-scroll text-green-400">
       <div className="w-max flex">
