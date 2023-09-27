@@ -27,7 +27,7 @@ const LoginPage = () => {
           <h1 className="font-bold text-xl xl:text-3xl">Welcome</h1>
 
           <button
-            className="flex gap-4 p-4 ring-1 ring-orange-100 rounded-md"
+            className="flex gap-4 p-4 ring-1 ring-lime-500 rounded-md"
             onClick={() => signIn("google")}
           >
             <Image
@@ -39,19 +39,10 @@ const LoginPage = () => {
             />
             <span>Sign in with Google</span>
           </button>
-          <button className="flex gap-4 p-4 ring-1 ring-blue-100 rounded-md">
-            <Image
-              src="/facebook.png"
-              alt=""
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-            <span>Sign in with Facebook</span>
-          </button>
+
           <p className="text-sm">
             Have a problem?
-            <Link className="underline" href="/">
+            <Link className="underline cursor-pointer" href="/">
               {" "}
               Contact us
             </Link>
