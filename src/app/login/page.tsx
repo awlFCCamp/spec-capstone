@@ -39,6 +39,19 @@ const LoginPage = () => {
             />
             <span>Sign in with Google</span>
           </button>
+          <button
+            className="flex gap-4 p-4 ring-1 ring-lime-500 rounded-md"
+            onClick={() => signIn("discord")}
+          >
+            <Image
+              src="/discord.png"
+              alt=""
+              width={20}
+              height={20}
+              className="object-contain"
+            />
+            <span>Sign in with Discord</span>
+          </button>
 
           <p className="text-sm">
             Have a problem?
