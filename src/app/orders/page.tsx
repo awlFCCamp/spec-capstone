@@ -15,31 +15,27 @@ const OrdersPage = () => {
         </thead>
         <tbody>
           <tr className="text-sm md:text-base bg-red-50">
-            <td className="hidden md:block py-6 px-1">1237861238721</td>
-            <td className="py-6 px-1">19.07.2023</td>
-            <td className="py-6 px-1">89.90</td>
-            <td className="hidden md:block py-6 px-1">
-              Big Burger Menu (2), Veggie Pizza (2), Coca Cola 1L (2)
-            </td>
-            <td className="py-6 px-1">On the way (approx. 10min)...</td>
+            <td className="hidden md:block py-6 px-1">1234567890</td>
+            <td className="py-6 px-1">01.10.2023</td>
+            <td className="py-6 px-1">15.00</td>
+            <td className="hidden md:block py-6 px-1">Coffee (1) Bagle(1) </td>
+            <td className="py-6 px-1">On the way</td>
           </tr>
           <tr className="text-sm md:text-base odd:bg-gray-100">
-            <td className="hidden md:block py-6 px-1">1237861238721</td>
-            <td className="py-6 px-1">19.07.2023</td>
-            <td className="py-6 px-1">89.90</td>
-            <td className="hidden md:block py-6 px-1">
-              Big Burger Menu (2), Veggie Pizza (2), Coca Cola 1L (2)
-            </td>
-            <td className="py-6 px-1">On the way (approx. 10min)...</td>
+            <td className="hidden md:block py-6 px-1">1234567890</td>
+            <td className="py-6 px-1">01.20.2023</td>
+            <td className="py-6 px-1">25.00</td>
+            <td className="hidden md:block py-6 px-1">Dozen Cup cakes (1)</td>
+            <td className="py-6 px-1">On the way</td>
           </tr>
           <tr className="text-sm md:text-base odd:bg-gray-100">
-            <td className="hidden md:block py-6 px-1">1237861238721</td>
-            <td className="py-6 px-1">19.07.2023</td>
-            <td className="py-6 px-1">89.90</td>
+            <td className="hidden md:block py-6 px-1">1234567890</td>
+            <td className="py-6 px-1">09.23.23</td>
+            <td className="py-6 px-1">26.00</td>
             <td className="hidden md:block py-6 px-1">
-              Big Burger Menu (2), Veggie Pizza (2), Coca Cola 1L (2)
+              Coffee(1) Tea(2) Muffin (12)
             </td>
-            <td className="py-6 px-1">On the way (approx. 10min)...</td>
+            <td className="py-6 px-1">On the way</td>
           </tr>
         </tbody>
       </table>
