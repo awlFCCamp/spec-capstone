@@ -2,15 +2,22 @@
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import { orderType } from "@/types/types";
+import { useRouter } from "next/navigation";
+
 const OrdersPage = () => {
   const { data: session, status } = useSession();
+
+  const router = useRouter();
+  if (status === "unauthenticated") {
+    router.push("/");
+  }
   const { isLoading, error, data } = useQuery({
     queryKey: ["orders"],
     queryFn: () =>
       fetch("http://localhost:3000/api/orders").then((res) => res.json()),
   });
 
-  if (isLoading) return "Loading...";
+  if (isLoading || status === "loading") return "Loading...";
   return (
     <div className="p-4 lg:px-20 xl:px-40 bg-lime-800 text-white">
       <table className="w-full border-separate border-spacing-3">

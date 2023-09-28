@@ -8,7 +8,7 @@ export const GET = async (req: NextRequest) => {
   const cat = searchParams.get("cat");
   if (session) {
     try {
-      const products = await prisma.product.findMany({
+      const orders = await prisma.order.findMany({
         where: {
           ...(cat ? { catSlug: cat } : { isFeatured: true }),
         },
