@@ -4,15 +4,8 @@ import { getAuthSession } from "@/util/auth";
 
 export const GET = async (req: NextRequest) => {
   const session = await getAuthSession();
-  const { searchParams } = new URL(req.url);
-  const cat = searchParams.get("cat");
   if (session) {
     try {
-      const orders = await prisma.order.findMany({
-        where: {
-          ...(cat ? { catSlug: cat } : { isFeatured: true }),
-        },
-      });
       return new NextResponse(JSON.stringify(products), { status: 200 });
     } catch (error) {
       console.log(error);
