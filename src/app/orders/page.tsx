@@ -33,13 +33,15 @@ const OrdersPage = () => {
         <tbody>
           {data.map((item: orderType) => (
             <tr className="text-sm md:text-base bg-slate-900" key={item.id}>
-              <td className="hidden md:block py-6 px-1">1234567890</td>
-              <td className="py-6 px-1">01.10.2023</td>
-              <td className="py-6 px-1">15.00</td>
-              <td className="hidden md:block py-6 px-1">
-                Coffee (1) Bagle(1){" "}
+              <td className="hidden md:block py-6 px-1">{item.id}</td>
+              <td className="py-6 px-1">
+                {item.createdAt.toString().slice(0, 10)}
               </td>
-              <td className="py-6 px-1">On the way</td>
+              <td className="py-6 px-1">{item.price}</td>
+              <td className="hidden md:block py-6 px-1">
+                {item.products[0].title}
+              </td>
+              <td className="py-6 px-1">{item.status}</td>
             </tr>
           ))}
         </tbody>

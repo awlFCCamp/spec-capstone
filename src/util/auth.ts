@@ -1,6 +1,5 @@
 import { NextAuthOptions, getServerSession, User } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import GithubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "./connect";
 import DiscordProvider from "next-auth/providers/discord";
@@ -40,6 +39,15 @@ export const authOptions: NextAuthOptions = {
         session.user.isAdmin = token.isAdmin;
       }
       return session;
+    },
+    async jwt({ token }) {
+      const userInfo = await prisma.user.findUnique({
+        where: {
+          email: token.email!,
+        },
+      });
+      token.isAdmin = userInfo?.isAdmin!;
+      return token;
     },
   },
 };
