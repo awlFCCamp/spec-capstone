@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "./connect";
 import DiscordProvider from "next-auth/providers/discord";
 
+//extend typescript type in nextAuth, adding isAdmin property to session
 declare module "next-auth" {
   interface Session {
     user: User & {
@@ -12,17 +13,20 @@ declare module "next-auth" {
   }
 }
 
+//extend typescript type in nextAuth, adding isAdmin property to jwt token
 declare module "next-auth/jwt" {
   interface JWT {
     isAdmin: Boolean;
   }
 }
 
+//configuration
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
   },
+  //use google and discord provider
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID as string,
@@ -33,13 +37,17 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
     }),
   ],
+
+  //modify before using and storing
   callbacks: {
+    //add isAdmin
     async session({ token, session }) {
       if (token) {
         session.user.isAdmin = token.isAdmin;
       }
       return session;
     },
+    //query db to see id user is admin, add isAdmin to jwt token
     async jwt({ token }) {
       const userInfo = await prisma.user.findUnique({
         where: {
