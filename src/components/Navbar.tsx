@@ -6,6 +6,7 @@ import CartIcon from "./CartIcon";
 import UserLinks from "./UserLinks";
 import Lottie from "lottie-react";
 import coffeeData from "../../assets/coffee.json";
+import styled from "styled-components";
 
 const Navbar = () => {
   const user = false;

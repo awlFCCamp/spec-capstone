@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 type propsType = {
   price: number;
-  id: number;
+  id: string;
 };
 
 const Price = ({ price, id }: propsType) => {
@@ -17,7 +17,7 @@ const Price = ({ price, id }: propsType) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl ffont-bold">${total.toFixed(2)}</h2>
+      <h2 className="text-2xl ffont-bold">${total}</h2>
       <div className="flex justify-between items-center">
         <div className="flex justify-between w-full p-3 ">
           <span>Quantity</span>

@@ -1,8 +1,39 @@
-import { singleProduct } from "@/data";
 import Image from "next/image";
 import Price from "@/components/Price";
+import { ProductType } from "@/types/types";
+import axios from "axios";
 
-const SingleProduct = () => {
+{
+  /*const getData = async (id: string) => {
+  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+  return res.json();
+};*/
+}
+
+const PRODUCTS_URL = "http://localhost:3000/api/products";
+
+const getData = async (id: string) => {
+  try {
+    const res = await axios.get(`${PRODUCTS_URL}/${id}`, {
+      headers: { "Cache-Control": "no-store" },
+    });
+    if (res.status !== 200) {
+      throw new Error("Failed");
+    }
+    return res.data;
+  } catch (error) {
+    throw new Error("Failed");
+  }
+};
+
+const SingleProduct = async ({ params }: { params: { id: string } }) => {
+  const singleProduct: ProductType = await getData(params.id);
+
   return (
     <div className="p-4 lg:px-20 xl:px-40 h-screen flex flex-col justify-around text-green-500 md:flex-row md:gap-8 md:items-cener">
       {singleProduct.img && (
