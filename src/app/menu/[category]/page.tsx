@@ -28,7 +28,7 @@ const CategoryPage = async ({ params }: paramsProps) => {
   const products: ProductType[] = await getData(params.category);
 
   return (
-    <div className="flex flex-wrap justify-center text-green-500 bg-slate-900">
+    <div className="h-4/5 flex flex-wrap justify-center text-green-500 bg-slate-900">
       {products.map((item) => (
         <Link
           key={item.id}
