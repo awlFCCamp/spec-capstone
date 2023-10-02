@@ -11,12 +11,12 @@ import styled from "styled-components";
 const Navbar = () => {
   const user = false;
   return (
-    <div className="h-12 bg-lime-600 text-slate-900 p-4 flex items-center justify-between border-b-2 uppercase md:h-24 lg:px-20 xl:px-40">
+    <div className="h-12 bg-lime-600 text-slate-900 p-4 flex items-center justify-between uppercase md:h-24 lg:px-20 xl:px-40">
       <div className="hidden md:flex gap-4 flex-1 items-center">
         <Lottie animationData={coffeeData} className="w-24 h-24" />
         <Link href="/">Homepage</Link>
         <Link href="/menu">Menu</Link>
-        <Link href="/contact">Contact</Link>
+        {/*<Link href="/contact">Contact</Link>*/}
       </div>
       <div className="text-xl md:font-bold flex-1 md:text-center">
         <Link href="/">Pâtisserie au Café</Link>

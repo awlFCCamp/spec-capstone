@@ -26,7 +26,7 @@ const Featured = async () => {
             className="w-screen h-[60vh] flex flex-col items-center justify-around p-4 md:w-[50vw] xL:h-[90vh]"
           >
             {item.img && (
-              <div className="relative flex-1 w-full my-3">
+              <div className="relative flex-1 w-full my-3 h-[400px]">
                 <Image
                   src={item.img}
                   alt=""

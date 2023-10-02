@@ -3,18 +3,6 @@ import Price from "@/components/Price";
 import { ProductType } from "@/types/types";
 import axios from "axios";
 
-{
-  /*const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-  return res.json();
-};*/
-}
-
 const PRODUCTS_URL = "http://localhost:3000/api/products";
 
 const getData = async (id: string) => {
@@ -35,15 +23,10 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const singleProduct: ProductType = await getData(params.id);
 
   return (
-    <div className="p-4 lg:px-20 xl:px-40 h-screen flex flex-col justify-around text-green-500 md:flex-row md:gap-8 md:items-cener">
+    <div className="p-4 lg:px-20 xl:px-40 h-screen bg-slate-900 flex flex-col justify-around text-green-500 md:flex-row md:gap-2 md:items-cener">
       {singleProduct.img && (
-        <div className="relative w-full h-1/2 md:h-[70%]">
-          <Image
-            src={singleProduct.img}
-            alt=""
-            className="oject-contain"
-            fill
-          />
+        <div className="relative w-1/2 h-1/2 md:h-[70%]">
+          <Image src={singleProduct.img} alt="" className="oject-cover" fill />
         </div>
       )}
       <div className="h-1/2 flex flex-col gap-4 md:h-[70%] md:justify-center md:gap-6 xl:gap-8">
