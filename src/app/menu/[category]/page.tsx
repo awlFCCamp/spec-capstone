@@ -23,8 +23,10 @@ async function getData(category: string) {
   }
 }
 
+// eslint-disable-next-line @next/next/no-async-client-component
 const CategoryPage = async ({ params }: paramsProps) => {
   const products: ProductType[] = await getData(params.category);
+
   return (
     <div className="flex flex-wrap text-green-500">
       {products.map((item) => (

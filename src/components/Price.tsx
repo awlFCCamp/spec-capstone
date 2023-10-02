@@ -1,19 +1,28 @@
 "use client";
 
+import { useCartStore } from "@/util/store";
 import { useState, useEffect } from "react";
+import { ProductType } from "@/types/types";
 
-type propsType = {
-  price: number;
-  id: string;
-};
-
-const Price = ({ price, id }: propsType) => {
-  const [total, setTotal] = useState(price);
+const Price = ({ product }: { product: ProductType }) => {
+  const [total, setTotal] = useState(product.price);
   const [quantity, setQuantity] = useState(1);
 
+  const { addToCart } = useCartStore();
+
+  const handleAdd = () => {
+    addToCart({
+      id: product.id,
+      title: product.title,
+      img: product.img,
+      price: total,
+      quantity: quantity,
+    });
+  };
+
   useEffect(() => {
-    setTotal(quantity * price);
-  }, [quantity, price]);
+    setTotal(quantity * product.price);
+  }, [quantity, product]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -35,7 +44,10 @@ const Price = ({ price, id }: propsType) => {
             </button>
           </div>
         </div>
-        <button className="uppercase w-56 bg-green-500 text-white p-3 ">
+        <button
+          className="uppercase w-56 bg-green-500 text-white p-3 "
+          onClick={handleAdd}
+        >
           Add to Cart
         </button>
       </div>

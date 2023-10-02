@@ -51,7 +51,7 @@ const SingleProduct = async ({ params }: { params: { id: string } }) => {
           {singleProduct.title}
         </h1>
         <p>{singleProduct.desc}</p>
-        <Price price={singleProduct.price} id={singleProduct.id} />
+        <Price product={singleProduct} />
       </div>
     </div>
   );

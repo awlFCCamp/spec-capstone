@@ -4,6 +4,7 @@ import Link from "next/link";
 import Lottie from "lottie-react";
 import cartData from "../../assets/cart.json";
 import styled from "styled-components";
+import { useCartStore } from "@/util/store";
 
 const CartIconWrapper = styled.div`
   margin-left: 12px;
@@ -28,12 +29,13 @@ const StyledLottie = styled(Lottie)`
 `;
 
 const CartIcon = () => {
+  const { totalItems } = useCartStore();
   return (
     <Link href="/cart">
       <CartIconWrapper>
         <CartContent>
           <StyledLottie animationData={cartData} />
-          <p>Cart (3)</p>
+          <p>Cart {totalItems}</p>
         </CartContent>
       </CartIconWrapper>
     </Link>
