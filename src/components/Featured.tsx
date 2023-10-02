@@ -1,6 +1,7 @@
 import Image from "next/image";
 import axios from "axios";
 import { ProductType } from "@/types/types";
+import Link from "next/link";
 
 async function getData() {
   try {
@@ -41,9 +42,11 @@ const Featured = async () => {
               </h1>
               <p className="p-4 2xl:p-8">{item.desc}</p>
               <span className="text-xl font-bold">{item.price}</span>
-              <button className="bg-green-500 text-white p-2 rounded-md">
-                Add to Cart
-              </button>
+              <Link href={`/product/${item.id}`}>
+                <button className="bg-green-500 text-white p-2 rounded-md">
+                  Learn More
+                </button>
+              </Link>
             </div>
           </div>
         ))}
