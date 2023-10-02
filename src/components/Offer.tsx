@@ -1,6 +1,12 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Offer = () => {
+  const router = useRouter();
+  const handleButtonClick = () => {
+    router.push("/menu");
+  };
   return (
     <div className="bg-slate-900 h-screen flex flex-col md:flex-row md:justify-between md:bg-[url('/offerBg.png)] md:h-[70vh]">
       <div className="flex-1 flex flex-col justify-center items-center text-center gap-8 p-6">
@@ -11,7 +17,10 @@ const Offer = () => {
           A cozy deal that delivers, give a pumpkiny present. Share all the fall
           feels by treating someone you love. All giftcard purchase is 20% off
         </p>
-        <button className="bg-green-500 text-white rounded-md py-3 px-6">
+        <button
+          className="bg-green-500 text-white rounded-md py-3 px-6"
+          onClick={handleButtonClick}
+        >
           Order Now
         </button>
       </div>

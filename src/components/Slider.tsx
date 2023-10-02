@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const data = [
   {
@@ -22,6 +23,7 @@ const data = [
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const router = useRouter();
   useEffect(() => {
     const interval = setInterval(
       () =>
@@ -30,13 +32,19 @@ const Slider = () => {
     );
     return () => clearInterval(interval);
   }, []);
+  const handleButtonClick = () => {
+    router.push("/menu");
+  };
   return (
     <div className="flex flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row bg-slate-900">
       <div className="flex-1 flex items-center justify-center flex-col gap-8 text-green-500 font-bold">
         <h1 className="text-5xl text-center uppercase p-4 md:p-10 md:text-6xl xl:text-7xl">
           {data[currentSlide].title}
         </h1>
-        <button className="bg-green-500 text-white uppercase py-4 px-8">
+        <button
+          className="bg-green-500 text-white uppercase py-4 px-8"
+          onClick={handleButtonClick}
+        >
           Order Now
         </button>
       </div>

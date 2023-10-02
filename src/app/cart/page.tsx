@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useCartStore } from "@/util/store";
+import { useState, useEffect } from "react";
 
 const Cartpage = () => {
   const { products, totalItems, totalPrice, removeFromCart } = useCartStore();
+
   return (
     <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col text-green-500 lg:flex-row">
       <div className="h-1/2 p-4 flex flex-col justify-center overflow-scroll lg:h-full lg:w-2/3 2xl:w-1/2 lg:px-20 xl:px-40 bg-slate-900">

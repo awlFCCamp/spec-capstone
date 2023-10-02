@@ -1,4 +1,3 @@
-import Notification from "@/components/Notification";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -25,7 +24,6 @@ export default function RootLayout({
         <AuthProvider>
           <QueryProvider>
             <div>
-              {/*<Notification />*/}
               <Navbar />
               {children}
               <Footer />
