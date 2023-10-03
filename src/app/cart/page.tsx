@@ -2,9 +2,35 @@
 import Image from "next/image";
 import { useCartStore } from "@/util/store";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Cartpage = () => {
   const { products, totalItems, totalPrice, removeFromCart } = useCartStore();
+  const { data: session } = useSession();
+  const router = useRouter();
+  const handleClick = async () => {
+    if (!session) {
+      router.push("/login");
+    } else {
+      try {
+        const res = await fetch("http://localhost:3000/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            price: totalPrice,
+            products,
+            status: "Not Paid!",
+            userEmail: session.user.email,
+          }),
+        });
+        const data = await res.json();
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   return (
     <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col text-green-500 lg:flex-row">
@@ -40,7 +66,10 @@ const Cartpage = () => {
           <span className="">TOTAL</span>
           <span className="font-bold">{totalPrice.toFixed(2)}</span>
         </div>
-        <button className="bg-green-500 text-white p-3 rounded-md w-1/2 self-end">
+        <button
+          className="bg-green-500 text-white p-3 rounded-md w-1/2 self-end"
+          onClick={handleClick}
+        >
           CHECKOUT
         </button>
       </div>
