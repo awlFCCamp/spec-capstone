@@ -6,7 +6,7 @@ const Footer = () => {
       <Link className="font-bold text-xl" href="/">
         Pâtisserie au Café
       </Link>
-      <p>All images courtesy of unsplash</p>
+      <p>AngelaCodes</p>
       <p>ALL RIGHTS RESERVED</p>
     </div>
   );
