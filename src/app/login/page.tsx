@@ -55,7 +55,7 @@ const LoginPage = () => {
 
           <p className="text-sm">
             Have a problem?
-            <Link className="underline cursor-pointer" href="/">
+            <Link className="underline cursor-pointer" href="/contact">
               {" "}
               Contact us
             </Link>
