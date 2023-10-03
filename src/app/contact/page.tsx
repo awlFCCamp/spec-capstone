@@ -1,46 +1,97 @@
 "use client";
 
-import React, { useRef, FormEvent } from "react";
-import emailjs, { EmailJSResponseStatus, sendForm } from "@emailjs/browser";
+import { useState } from "react";
 
-const ContactPage = () => {
-  const form = useRef<HTMLFormElement | null>(null);
+export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
 
-  const sendEmail = (e: FormEvent) => {
-    e.preventDefault();
+  async function handleSubmit(event: any) {
+    event.preventDefault();
+    setLoading(true);
 
-    if (form.current) {
-      sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY"
-      )
-        .then(
-          (result) => {
-            console.log(result.text);
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        )
-        .catch((error) => {
-          console.error("Email Error", error);
-        });
+    const data = {
+      name: String(event.target.name.value),
+      email: String(event.target.email.value),
+      message: String(event.target.message.value),
+    };
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      console.log("Message sent successfully");
+      setLoading(false);
+      // reset the form
+      event.target.name.value = "";
+      event.target.email.value = "";
+      event.target.message.value = "";
     }
-
-    return (
-      <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" />
-        <label>Email</label>
-        <input type="email" name="user_email" />
-        <label>Message</label>
-        <textarea name="message" />
-        <input type="submit" value="Send" />
+    if (!response.ok) {
+      console.log("Error sending message");
+      setLoading(false);
+    }
+  }
+  return (
+    <div className="flex flex-col justify-center items-center h-screen bg-slate-900 font-bold text-lime-600">
+      <h1 className="text-xl uppercase md:text-2xl lg:text-5xl">Contact Us</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="w-3/5 flex flex-col justify-center items-center"
+      >
+        <div className="w-full flex flex-col my-4">
+          <label className="my-2" htmlFor="name">
+            Name
+          </label>
+          <input
+            type="text"
+            minLength={3}
+            maxLength={150}
+            required
+            className=" p-4 bg-gray-50 border border-gray-100 "
+            autoComplete="off"
+            id="name"
+          />
+        </div>
+        <div className="w-full flex flex-col my-4">
+          <label className="my-2" htmlFor="email">
+            Email
+          </label>
+          <input
+            type="email"
+            minLength={5}
+            maxLength={150}
+            required
+            className=" p-4 bg-gray-50 border border-gray-100 "
+            autoComplete="off"
+            id="email"
+          />
+        </div>
+        <div className="w-full">
+          <label className="" htmlFor="message">
+            Message
+          </label>
+          <textarea
+            rows={4}
+            required
+            minLength={10}
+            maxLength={500}
+            name="message"
+            className="w-full p-4 bg-gray-50 border border-gray-100 my-2 "
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="px-4 py-2 w-40 bg-gray-700 disabled:bg-gray-400 disabled:text-gray-100 text-white font-medium mt-4"
+        >
+          Send Message
+        </button>
       </form>
-    );
-  };
-};
-
-export default ContactPage;
+    </div>
+  );
+}

@@ -75,7 +75,7 @@ export const featuredProducts: Products = [
   },
 ];
 
-export const pizzas: Products = [
+export const pastries: Products = [
   {
     id: 1,
     title: "Croissant",

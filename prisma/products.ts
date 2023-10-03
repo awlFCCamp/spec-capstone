@@ -1,0 +1,68 @@
+export const products = [
+  {
+    title: "Butter Croissant",
+    desc: "The softest and creamiest croissant in the world",
+    img: "/temporary/p1.png",
+    price: 3.99,
+    isFeatured: true,
+    category: "pastry",
+  },
+  {
+    title: "Frost Cupcakes",
+    desc: "A dozen of daily freshly made frost cupcakes",
+    img: "/temporary/p2.png",
+    price: 11.99,
+    isFeatured: true,
+    category: "pastry",
+  },
+  {
+    title: "Earl Grey Tea",
+    desc: "An English classic, that gives you an unique taste ",
+    img: "/temporary/p6.png",
+    price: 4.99,
+    isFeatured: true,
+    category: "tea",
+  },
+  {
+    title: "Chai Tea",
+    desc: "Enjoy a cup of tea with aromatic herbs abd spices.",
+    img: "/temporary/p7.png",
+    price: 4.99,
+    isFeatured: true,
+    category: "tea",
+  },
+
+  {
+    title: "Pumpkin Spice Latte",
+    desc: "A fall delight will give you the warmth fall feeling",
+    img: "/temporary/p8.png",
+    price: 6.99,
+    isFeatured: true,
+    category: "coffee",
+  },
+  {
+    title: "Dark Roast Coffee",
+    desc: "A strong wake up for your morning.",
+    img: "/temporary/p9.png",
+    price: 5.99,
+    isFeatured: true,
+    category: "coffee",
+  },
+  {
+    title: "Sesame Bagle",
+    desc: "A dense, chewy bagle will light up your morning",
+    img: "/temporary/p3.png",
+    price: 5.99,
+    isFeatured: false,
+    category: "pastry",
+  },
+
+  {
+    title: "Bagle trio",
+    desc: "Order 3 sesame bagles to share with your family",
+    img: "/temporary/p4.png",
+    price: 9.99,
+    isFeatured: false,
+    category: "pastry",
+  },
+];
