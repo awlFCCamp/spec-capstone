@@ -25,4 +25,11 @@ export const useCartStore = create<CartType & ActionTypes>((set, get) => ({
       totalPrice: state.totalPrice - item.price,
     }));
   },
+  reset() {
+    set((state) => ({
+      products: [],
+      totalItems: 0,
+      totalPrice: 0,
+    }));
+  },
 }));
