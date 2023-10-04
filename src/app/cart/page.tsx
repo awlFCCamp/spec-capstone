@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const Cartpage = () => {
-  const { products, totalItems, totalPrice, removeFromCart, reset } =
+  const { products, totalItems, totalPrice, removeFromCart, emptyCart } =
     useCartStore();
   const { data: session } = useSession();
   const router = useRouter();
@@ -27,7 +27,7 @@ const Cartpage = () => {
         });
         const data = await res.json();
         console.log(data);
-        reset();
+        emptyCart();
         router.push("/orders");
       } catch (err) {
         console.log(err);

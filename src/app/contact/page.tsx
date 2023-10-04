@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useRouter } from "next/navigation";
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
-
+  const router = useRouter();
   async function handleSubmit(event: any) {
     event.preventDefault();
     setLoading(true);
@@ -30,12 +32,14 @@ export default function ContactForm() {
       event.target.name.value = "";
       event.target.email.value = "";
       event.target.message.value = "";
+      router.push("/");
     }
     if (!response.ok) {
       console.log("Error sending message");
       setLoading(false);
     }
   }
+
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-slate-900 font-bold text-lime-600">
       <h1 className="text-xl uppercase md:text-2xl lg:text-5xl">Contact Us</h1>

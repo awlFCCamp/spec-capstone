@@ -19,7 +19,7 @@ const Navbar = () => {
         <Link href="/contact">Contact</Link>
       </div>
       <div className="text-xl md:font-bold flex-1 md:text-center">
-        <Link href="/">Pâtisserie au Café</Link>
+        <Link href="/">Coffee and Pastries</Link>
       </div>
       <div className="md: hidden">
         <Menu />
